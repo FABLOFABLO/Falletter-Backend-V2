@@ -8,8 +8,6 @@ import com.example.falleterbev2.domain.user.service.SignupService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -21,13 +19,14 @@ public class UserController {
     private final LoginService loginService;
 
     @PostMapping("/signup")
-    public ResponseEntity<Void> signup(@Valid @RequestBody SignupRequest request) {
+    @ResponseStatus(HttpStatus.CREATED)
+    public void signup(@Valid @RequestBody SignupRequest request) {
         signupService.singUp(request);
-        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     @PostMapping("/login")
-    public ResponseEntity<LoginResponse> login(@RequestBody LoginRequest request) {
-        return ResponseEntity.ok(loginService.login(request));
+    @ResponseStatus(HttpStatus.OK)
+    public LoginResponse login(@RequestBody LoginRequest request) {
+        return loginService.login(request);
     }
 }

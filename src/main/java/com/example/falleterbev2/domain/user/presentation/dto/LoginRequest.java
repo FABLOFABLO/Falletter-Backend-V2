@@ -1,6 +1,5 @@
 package com.example.falleterbev2.domain.user.presentation.dto;
 
-
 import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 
