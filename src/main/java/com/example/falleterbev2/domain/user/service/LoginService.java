@@ -27,10 +27,10 @@ public class LoginService {
         }
 
         String accessToken =
-                jwtTokenProvider.generateAccessToken(user.getEmail(), user.getRole());
+                jwtTokenProvider.generateAccessToken(user.getEmail());
 
         String refreshToken =
-                jwtTokenProvider.generateRefreshToken(user.getEmail(), user.getRole());
+                jwtTokenProvider.generateRefreshToken(user.getEmail());
 
         return new LoginResponse(accessToken, refreshToken);
     }

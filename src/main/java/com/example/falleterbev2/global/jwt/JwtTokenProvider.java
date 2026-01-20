@@ -2,7 +2,6 @@ package com.example.falleterbev2.global.jwt;
 
 import com.example.falleterbev2.domain.auth.domain.RefreshToken;
 import com.example.falleterbev2.domain.auth.domain.repository.RefreshTokenRepository;
-import com.example.falleterbev2.domain.user.domain.Role;
 import com.example.falleterbev2.global.auth.AuthDetailsService;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
@@ -28,7 +27,7 @@ public class JwtTokenProvider {
     private final AuthDetailsService authDetailsService;
     private final RefreshTokenRepository refreshTokenRepository;
 
-    private SecretKey key; // 🔥 이게 핵심
+    private SecretKey key;
 
     @PostConstruct
     public void init() {
@@ -36,13 +35,13 @@ public class JwtTokenProvider {
         this.key = Keys.hmacShaKeyFor(keyBytes); // 256bit 이상 보장
     }
 
-    public String generateAccessToken(String accountId, Role role) {
-        return generateToken(accountId, role.name(), "access", jwtProperty.getAccessExp());
+    public String generateAccessToken(String accountId) {
+        return generateToken(accountId,"access", jwtProperty.getAccessExp());
     }
 
-    public String generateRefreshToken(String accountId, Role role) {
+    public String generateRefreshToken(String accountId) {
         String refreshToken =
-                generateToken(accountId, role.name(), "refresh", jwtProperty.getRefreshExp());
+                generateToken(accountId, "refresh", jwtProperty.getRefreshExp());
 
         refreshTokenRepository.save(
                 RefreshToken.builder()
@@ -55,10 +54,9 @@ public class JwtTokenProvider {
         return refreshToken;
     }
 
-    private String generateToken(String subject, String role, String type, Long exp) {
+    private String generateToken(String subject,String type, Long exp) {
         return Jwts.builder()
                 .setSubject(subject)
-                .claim("authority", role)
                 .setHeaderParam("type", type)
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + exp))
