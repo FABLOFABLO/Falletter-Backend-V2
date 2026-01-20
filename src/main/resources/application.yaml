@@ -22,6 +22,10 @@ spring:
       client-type: lettuce
       host: ${REDIS_HOST}
       port: ${REDIS_PORT}
+jwt:
+  secret-key: ${JWT_SECRET_KEY}
+  access-exp: 3600000      # 1시간 (밀리초)
+  refresh-exp: 1209600000  # 14일
 
 logging:
   level:

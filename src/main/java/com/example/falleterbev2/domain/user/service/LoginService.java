@@ -19,7 +19,7 @@ public class LoginService {
 
     public LoginResponse login(LoginRequest request) {
 
-        User user = userRepository.findByName(request.getEmail())
+        User user = userRepository.findByEmail(request.getEmail())
                 .orElseThrow(() -> new RuntimeException("유저 없음"));
 
         if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {

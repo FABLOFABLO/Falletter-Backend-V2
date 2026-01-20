@@ -4,9 +4,12 @@ import com.example.falleterbev2.domain.auth.domain.RefreshToken;
 import com.example.falleterbev2.domain.auth.domain.repository.RefreshTokenRepository;
 import com.example.falleterbev2.domain.user.domain.Role;
 import com.example.falleterbev2.global.auth.AuthDetailsService;
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.*;
+import io.jsonwebtoken.io.Decoders;
+import io.jsonwebtoken.security.Keys;
+
+import javax.crypto.SecretKey;
+import jakarta.annotation.PostConstruct;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -24,6 +27,14 @@ public class JwtTokenProvider {
     private final JwtProperty jwtProperty;
     private final AuthDetailsService authDetailsService;
     private final RefreshTokenRepository refreshTokenRepository;
+
+    private SecretKey key; // 🔥 이게 핵심
+
+    @PostConstruct
+    public void init() {
+        byte[] keyBytes = Decoders.BASE64.decode(jwtProperty.getSecretKey());
+        this.key = Keys.hmacShaKeyFor(keyBytes); // 256bit 이상 보장
+    }
 
     public String generateAccessToken(String accountId, Role role) {
         return generateToken(accountId, role.name(), "access", jwtProperty.getAccessExp());
@@ -50,8 +61,8 @@ public class JwtTokenProvider {
                 .claim("authority", role)
                 .setHeaderParam("type", type)
                 .setIssuedAt(new Date())
-                .setExpiration(new Date(System.currentTimeMillis() + exp * 1000))
-                .signWith(SignatureAlgorithm.HS256, jwtProperty.getSecretKey())
+                .setExpiration(new Date(System.currentTimeMillis() + exp))
+                .signWith(key, SignatureAlgorithm.HS256)
                 .compact();
     }
 
@@ -73,14 +84,15 @@ public class JwtTokenProvider {
                 userDetails.getAuthorities()
         );
     }
+
     public boolean validateToken(String token) {
         try {
             parseClaims(token);
             return true;
-        } catch (io.jsonwebtoken.ExpiredJwtException e) {
-            throw new BadCredentialsException("Expired or invalid JWT token");
+        } catch (ExpiredJwtException e) {
+            throw new BadCredentialsException("Expired JWT token");
         } catch (Exception e) {
-            throw new BadCredentialsException("Invalid token");
+            throw new BadCredentialsException("Invalid JWT token");
         }
     }
 
@@ -89,8 +101,9 @@ public class JwtTokenProvider {
     }
 
     private Claims parseClaims(String token) {
-        return Jwts.parser()
-                .setSigningKey(jwtProperty.getSecretKey())
+        return Jwts.parserBuilder()
+                .setSigningKey(key)
+                .build()
                 .parseClaimsJws(token)
                 .getBody();
     }
