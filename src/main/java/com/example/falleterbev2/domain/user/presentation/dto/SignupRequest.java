@@ -32,5 +32,4 @@ public class SignupRequest {
 
     @NotNull
     private Gender gender;
-
 }
