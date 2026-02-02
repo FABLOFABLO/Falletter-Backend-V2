@@ -1,10 +1,10 @@
 package com.example.falleterbev2.global.config;
 
 import com.example.falleterbev2.global.jwt.JwtTokenFilter;
-import com.example.falleterbev2.global.jwt.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -32,6 +32,8 @@ public class SecurityConfig {
                                 "/user/login",
                                 "/user/signup"
                         ).permitAll()
+                        //item
+                        .requestMatchers(HttpMethod.GET, "/item/amount").authenticated()
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(
