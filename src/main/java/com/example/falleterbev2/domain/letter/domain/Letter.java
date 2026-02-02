@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 @Builder
 @Entity
 
-public class letter {
+public class Letter {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "letter_id")
