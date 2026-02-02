@@ -1,5 +1,6 @@
 package com.example.falleterbev2.domain.user.domain;
 
+import com.example.falleterbev2.domain.item.domain.Item;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -33,4 +34,7 @@ public class User {
 
     @Column(nullable = false,length = 50)
     private String email;
+
+    @OneToOne(mappedBy = "user", fetch = FetchType.LAZY)
+    private Item item;
 }

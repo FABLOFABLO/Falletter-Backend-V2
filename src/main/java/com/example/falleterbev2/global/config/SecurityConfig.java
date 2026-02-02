@@ -32,9 +32,11 @@ public class SecurityConfig {
                                 "/user/login",
                                 "/user/signup"
                         ).permitAll()
+
                         //item
                         .requestMatchers(HttpMethod.GET, "/item/amount").authenticated()
-                        .anyRequest().authenticated()
+
+                        .anyRequest().permitAll()
                 )
                 .addFilterBefore(
                         jwtTokenFilter,
