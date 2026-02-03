@@ -20,13 +20,13 @@ public class Letter {
     @Column(name = "letter_id")
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "recipient_id" , nullable = false)
-    private User receiverId;
+    private User receiver;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "sender_id" , nullable = false)
-    private User senderId;
+    private User sender;
 
     @Column(nullable = false)
     private String content;

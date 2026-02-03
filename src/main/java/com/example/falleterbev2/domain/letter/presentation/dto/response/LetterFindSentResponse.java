@@ -4,13 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
-
 @Getter
-@NoArgsConstructor
 @AllArgsConstructor
-public class LettersFindReceivedResponse {
+@NoArgsConstructor
+public class LetterFindSentResponse {
     private Long letterId;
-    private String preview;
-    private LocalDateTime receivedAt;
+    private String receiverName;
+    private String receiverBatch;
+    private String sentAt;
 }

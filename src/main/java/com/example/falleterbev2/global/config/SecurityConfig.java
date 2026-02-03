@@ -24,9 +24,7 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(csrf -> csrf.disable())
-                .sessionManagement(session ->
-                        session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                )
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(
                                 "/user/login",
@@ -38,6 +36,9 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.PATCH, "/feed/update/{feed-id}").authenticated()
                         .requestMatchers(HttpMethod.DELETE, "/feed/delete/{feed-id}").authenticated()
 
+                        //user
+                        .requestMatchers(HttpMethod.POST,"/user/signup").permitAll()
+                        .requestMatchers(HttpMethod.POST,"/user/login").permitAll()
                         //item
                         .requestMatchers(HttpMethod.GET, "/item/amount").authenticated()
 
