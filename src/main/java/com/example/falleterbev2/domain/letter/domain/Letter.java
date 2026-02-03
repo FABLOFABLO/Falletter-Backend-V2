@@ -21,17 +21,17 @@ public class Letter {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "recipient_id" , nullable = false)
+    @JoinColumn(name = "recipient_id")
     private User receiver;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "sender_id" , nullable = false)
+    @JoinColumn(name = "sender_id")
     private User sender;
 
     @Column(nullable = false)
     private String content;
 
     @CreatedDate
-    @Column(name ="created_at", nullable = false)
+    @Column(name ="created_at")
     private LocalDateTime createdAt;
 }

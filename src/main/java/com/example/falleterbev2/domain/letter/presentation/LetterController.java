@@ -4,6 +4,7 @@ import com.example.falleterbev2.domain.letter.presentation.dto.request.LettersSe
 import com.example.falleterbev2.domain.letter.presentation.dto.response.LetterFindSentResponse;
 import com.example.falleterbev2.domain.letter.presentation.dto.response.LettersFindReceivedResponse;
 import com.example.falleterbev2.domain.letter.service.LettersFindReceivedService;
+import com.example.falleterbev2.domain.letter.service.LettersFindSentService;
 import com.example.falleterbev2.domain.letter.service.LettersSendService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -17,6 +18,7 @@ import java.util.List;
 public class LetterController {
     private final LettersSendService lettersSendService;
     private final LettersFindReceivedService lettersFindReceivedService;
+    private final LettersFindSentService lettersFindSentService;
 
     @PostMapping("/send")
     @ResponseStatus(HttpStatus.OK)
@@ -28,5 +30,11 @@ public class LetterController {
     @ResponseStatus(HttpStatus.OK)
     public List<LettersFindReceivedResponse> findLettersReceived() {
         return lettersFindReceivedService.findLettersReceived();
+    }
+
+    @GetMapping("/get-list/send")
+    @ResponseStatus(HttpStatus.OK)
+    public List<LetterFindSentResponse> findLettersSend() {
+        return lettersFindSentService.findLettersSend();
     }
 }

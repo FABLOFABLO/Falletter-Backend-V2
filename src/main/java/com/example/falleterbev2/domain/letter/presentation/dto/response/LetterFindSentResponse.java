@@ -1,15 +1,20 @@
 package com.example.falleterbev2.domain.letter.presentation.dto.response;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
+
+import java.time.LocalDateTime;
 
 @Getter
-@AllArgsConstructor
-@NoArgsConstructor
 public class LetterFindSentResponse {
-    private Long letterId;
-    private String receiverName;
-    private String receiverBatch;
-    private String sentAt;
+    private final Long letterId;
+    private final String receiverName;
+    private final String receiverBatch;
+    private final LocalDateTime createdAt;
+
+    public LetterFindSentResponse(Long id, String name, String batch, LocalDateTime sentAt) {
+        this.letterId = id;
+        this.receiverName = name;
+        this.receiverBatch = batch;
+        this.createdAt = sentAt;
+    }
 }

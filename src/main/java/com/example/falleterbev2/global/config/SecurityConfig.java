@@ -41,6 +41,10 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.POST,"/user/login").permitAll()
                         //item
                         .requestMatchers(HttpMethod.GET, "/item/amount").authenticated()
+                        //letters
+                        .requestMatchers(HttpMethod.POST, "/letters/send").authenticated()
+                        .requestMatchers(HttpMethod.GET, "/letters/get-list/received").authenticated()
+                        .requestMatchers(HttpMethod.GET, "/letters/get-list/send").authenticated()
 
                         .anyRequest().permitAll()
                 )
