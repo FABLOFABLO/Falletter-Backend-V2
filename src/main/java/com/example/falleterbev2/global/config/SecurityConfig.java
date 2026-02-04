@@ -32,6 +32,11 @@ public class SecurityConfig {
                                 "/user/login",
                                 "/user/signup"
                         ).permitAll()
+                        //feed
+                        .requestMatchers(HttpMethod.POST, "/feed/create").authenticated()
+                        .requestMatchers(HttpMethod.GET, "/feed/readAll").authenticated()
+                        .requestMatchers(HttpMethod.PATCH, "/feed/update/{feed-id}").authenticated()
+                        .requestMatchers(HttpMethod.DELETE, "/feed/delete/{feed-id}").authenticated()
 
                         //item
                         .requestMatchers(HttpMethod.GET, "/item/amount").authenticated()
