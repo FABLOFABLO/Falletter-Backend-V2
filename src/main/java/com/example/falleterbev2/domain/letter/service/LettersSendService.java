@@ -22,7 +22,7 @@ public class LettersSendService {
         User sender = userRepository.findById(userFacade.currentUserId())
                 .orElseThrow(() -> new IllegalArgumentException("보낸 유저 없음"));
 
-        User receiver = userRepository.findById(request.getUserName().getId())
+        User receiver = userRepository.findById(request.getReceiverId())
                 .orElseThrow(() -> new IllegalArgumentException("받는 유저 없음"));
 
         Letter letter = Letter.builder()
