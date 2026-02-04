@@ -19,21 +19,21 @@ import java.time.LocalDateTime;
 public class Letter {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "letter_id")
+    @Column(name = "letter_id",nullable = false)
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "recipient_id")
+    @JoinColumn(name = "recipient_id",nullable = false)
     private User receiver;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "sender_id")
+    @JoinColumn(name = "sender_id",nullable = false)
     private User sender;
 
     @Column(nullable = false)
     private String content;
 
     @CreatedDate
-    @Column(name ="created_at")
+    @Column(name ="created_at" , nullable = false)
     private LocalDateTime createdAt;
 }

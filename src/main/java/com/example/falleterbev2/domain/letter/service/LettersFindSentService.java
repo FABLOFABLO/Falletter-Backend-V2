@@ -6,6 +6,7 @@ import com.example.falleterbev2.domain.letter.presentation.dto.response.LetterFi
 import com.example.falleterbev2.domain.user.facade.UserFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -15,6 +16,7 @@ public class LettersFindSentService {
     private final LetterRepository letterRepository;
     private final UserFacade userFacade;
 
+    @Transactional(readOnly = true)
     public List<LetterFindSentResponse> findLettersSend() {
         Long SenderId = userFacade.currentUserId();
         List<Letter> letters = letterRepository.findBySender_Id(SenderId);
