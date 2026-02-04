@@ -4,12 +4,11 @@ import com.example.falleterbev2.domain.letter.domain.Letter;
 import com.example.falleterbev2.domain.letter.presentation.dto.request.LettersSendRequest;
 import com.example.falleterbev2.domain.letter.presentation.dto.response.LetterFindSentResponse;
 import com.example.falleterbev2.domain.letter.presentation.dto.response.LetterReadReceivedResponse;
+import com.example.falleterbev2.domain.letter.presentation.dto.response.LetterReadSentResponse;
 import com.example.falleterbev2.domain.letter.presentation.dto.response.LettersFindReceivedResponse;
-import com.example.falleterbev2.domain.letter.service.LetterReadReceivedService;
-import com.example.falleterbev2.domain.letter.service.LettersFindReceivedService;
-import com.example.falleterbev2.domain.letter.service.LettersFindSentService;
-import com.example.falleterbev2.domain.letter.service.LettersSendService;
+import com.example.falleterbev2.domain.letter.service.*;
 import lombok.RequiredArgsConstructor;
+import org.springframework.boot.autoconfigure.graphql.GraphQlProperties;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,6 +22,7 @@ public class LetterController {
     private final LettersFindReceivedService lettersFindReceivedService;
     private final LettersFindSentService lettersFindSentService;
     private final LetterReadReceivedService letterReadReceivedService;
+    private final LetterReadSentService letterReadSentService;
 
     @PostMapping("/send")
     @ResponseStatus(HttpStatus.OK)
@@ -45,6 +45,12 @@ public class LetterController {
     @ResponseStatus(HttpStatus.OK)
     public LetterReadReceivedResponse readReceivedLetter(@PathVariable Long id) {
         return letterReadReceivedService.readReceivedLetter(id);
+    }
+
+    @GetMapping("/sent/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public LetterReadSentResponse readSentLetter(@PathVariable Long id) {
+        return letterReadSentService.readSentLetter(id);
     }
 
 }
