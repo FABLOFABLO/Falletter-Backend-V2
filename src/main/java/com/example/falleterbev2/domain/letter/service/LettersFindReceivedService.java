@@ -2,6 +2,7 @@ package com.example.falleterbev2.domain.letter.service;
 
 import com.example.falleterbev2.domain.letter.domain.Letter;
 import com.example.falleterbev2.domain.letter.domain.repository.LetterRepository;
+import com.example.falleterbev2.domain.letter.presentation.dto.response.LetterFindSentResponse;
 import com.example.falleterbev2.domain.letter.presentation.dto.response.LettersFindReceivedResponse;
 import com.example.falleterbev2.domain.user.facade.UserFacade;
 import lombok.RequiredArgsConstructor;
@@ -20,7 +21,6 @@ public class LettersFindReceivedService {
     public List<LettersFindReceivedResponse> findLettersReceived() {
         Long receiverId = userFacade.currentUserId();
         List<Letter> letters = letterRepository.findByReceiver_Id(receiverId);
-
         return letters.stream()
                 .map(letter -> new LettersFindReceivedResponse(
                         letter.getId(),
