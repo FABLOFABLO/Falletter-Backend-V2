@@ -53,5 +53,4 @@ public class LetterController {
     public LetterReadSentResponse readSentLetter(@PathVariable Long id) {
         return letterReadSentService.readSentLetter(id);
     }
-
 }
