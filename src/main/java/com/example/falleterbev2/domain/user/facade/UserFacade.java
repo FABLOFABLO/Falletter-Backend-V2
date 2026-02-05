@@ -2,6 +2,7 @@ package com.example.falleterbev2.domain.user.facade;
 
 import com.example.falleterbev2.domain.user.domain.User;
 import com.example.falleterbev2.domain.user.domain.repository.UserRepository;
+import com.example.falleterbev2.domain.user.exception.UserNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -14,12 +15,16 @@ public class UserFacade {
     private final UserRepository userRepository;
 
     public Long currentUserId() {
-        String accountId = SecurityContextHolder.getContext().getAuthentication(). getName();
+        String accountId = SecurityContextHolder.getContext().getAuthentication().getName();
 
         return userRepository.findByEmail(accountId)
-                .orElseThrow(() -> new ResponseStatusException(
-                        HttpStatus.NOT_FOUND,
-                        "사용자를 찾을 수 없습니다."
-                )).getId();
+                .orElseThrow(() -> UserNotFoundException.EXCEPTION).getId();
+    }
+
+    public User currentUser() {
+        Long userId = currentUserId();
+        User user = userRepository.findById(userId)
+                .orElseThrow(()-> UserNotFoundException.EXCEPTION);
+        return user;
     }
 }
