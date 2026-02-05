@@ -41,6 +41,7 @@ public class LetterController {
     public List<LetterFindSentResponse> findLettersSend() {
         return lettersFindSentService.findLettersSend();
     }
+
     @GetMapping("/received/{id}")
     @ResponseStatus(HttpStatus.OK)
     public LetterReadReceivedResponse readReceivedLetter(@PathVariable Long id) {
