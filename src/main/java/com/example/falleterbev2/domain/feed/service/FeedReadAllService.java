@@ -3,9 +3,9 @@ package com.example.falleterbev2.domain.feed.service;
 import com.example.falleterbev2.domain.feed.domain.Feed;
 import com.example.falleterbev2.domain.feed.domain.repository.FeedRepository;
 import com.example.falleterbev2.domain.feed.presentation.dto.reponse.FeedAllResponse;
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
@@ -13,7 +13,7 @@ import java.util.List;
 public class FeedReadAllService {
     private final FeedRepository feedRepository;
 
-    @Transactional
+    @Transactional(readOnly = true)
     public List<FeedAllResponse> execute() {
         List<Feed> feeds = feedRepository.findAllFeeds();
 
