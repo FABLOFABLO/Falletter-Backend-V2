@@ -17,8 +17,7 @@ public class FeedDeleteService {
     public void execute(Long feedId) {
         Feed feed = feedRepository.findById(feedId)
                 .orElseThrow(()-> FeedNotFoundException.EXCEPTION);
-        if(!(feed.getUser() == userFacade.currentUser()))
-        {
+        if(!(feed.getUser() == userFacade.currentUser())) {
             throw OnlyAuthorUpdateFeedException.EXCEPTION;
         }
 
