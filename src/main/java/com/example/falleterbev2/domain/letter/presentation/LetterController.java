@@ -1,6 +1,5 @@
 package com.example.falleterbev2.domain.letter.presentation;
 
-import com.example.falleterbev2.domain.letter.domain.Letter;
 import com.example.falleterbev2.domain.letter.presentation.dto.request.LettersSendRequest;
 import com.example.falleterbev2.domain.letter.presentation.dto.response.LetterFindSentResponse;
 import com.example.falleterbev2.domain.letter.presentation.dto.response.LetterReadReceivedResponse;
@@ -8,7 +7,6 @@ import com.example.falleterbev2.domain.letter.presentation.dto.response.LetterRe
 import com.example.falleterbev2.domain.letter.presentation.dto.response.LettersFindReceivedResponse;
 import com.example.falleterbev2.domain.letter.service.*;
 import lombok.RequiredArgsConstructor;
-import org.springframework.boot.autoconfigure.graphql.GraphQlProperties;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
