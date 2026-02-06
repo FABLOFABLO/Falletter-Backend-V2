@@ -1,5 +1,7 @@
 package com.example.falleterbev2.global.error.exception;
 
+import com.example.falleterbev2.domain.letter.exception.NotFoundReceivedLetterException;
+import com.example.falleterbev2.domain.letter.presentation.dto.response.LetterReadReceivedResponse;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -13,7 +15,13 @@ public enum ErrorCode {
 
     //feed
     FeedNotFound(404, "존재하지 않는 게시물입니다"),
-    OnlyAuthorUpdateFeed(403, "자신의 게시물만 삭제 가능합니다");
+    OnlyAuthorUpdateFeed(403, "자신의 게시물만 삭제 가능합니다"),
+
+    //letter
+    NotFoundReceivedUser(404, "레터를 받을 유저를 찾을수 없습니다."),
+    NotFoundSentUser(404, "레터를 보낸 유저를 찾을수 없습니다"),
+    NotFoundReceivedLetter(404, "해당 받은 레터를 찾을수없습니다"),
+    NotFoundSentLetter(404, "해당 보낸 레터를 찾을수없습니다");
 
     private final Integer status;
     private final String message;

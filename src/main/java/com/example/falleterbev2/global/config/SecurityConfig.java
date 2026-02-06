@@ -24,22 +24,25 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(csrf -> csrf.disable())
-                .sessionManagement(session ->
-                        session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                )
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers(
-                                "/user/login",
-                                "/user/signup"
-                        ).permitAll()
                         //feed
                         .requestMatchers(HttpMethod.POST, "/feed/create").authenticated()
                         .requestMatchers(HttpMethod.GET, "/feed/readAll").authenticated()
                         .requestMatchers(HttpMethod.PATCH, "/feed/update/{feed-id}").authenticated()
                         .requestMatchers(HttpMethod.DELETE, "/feed/delete/{feed-id}").authenticated()
 
+                        //user
+                        .requestMatchers(HttpMethod.POST,"/user/signup").permitAll()
+                        .requestMatchers(HttpMethod.POST,"/user/login").permitAll()
                         //item
                         .requestMatchers(HttpMethod.GET, "/item/amount").authenticated()
+                        //letters
+                        .requestMatchers(HttpMethod.POST, "/letters/send").authenticated()
+                        .requestMatchers(HttpMethod.GET, "/letters/get-list/received").authenticated()
+                        .requestMatchers(HttpMethod.GET, "/letters/get-list/send").authenticated()
+                        .requestMatchers(HttpMethod.GET, "/letters/received/{id}").authenticated()
+                        .requestMatchers(HttpMethod.GET, "/letters/sent/{id}").authenticated()
 
                         .anyRequest().permitAll()
                 )
