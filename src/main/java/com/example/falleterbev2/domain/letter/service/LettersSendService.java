@@ -21,8 +21,7 @@ public class LettersSendService {
 
     public void sendLetter(LettersSendRequest request) {
 
-        User sender = userRepository.findById(userFacade.currentUserId())
-                .orElseThrow(() -> NotFoundSentUserException.EXCEPTION);
+        User sender = userFacade.currentUser();
 
         User receiver = userRepository.findById(request.getReceiverId())
                 .orElseThrow(() -> NotFoundReceivedUserException.EXCEPTION);
