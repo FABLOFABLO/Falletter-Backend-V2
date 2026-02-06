@@ -3,6 +3,7 @@ package com.example.falleterbev2.domain.letter.service;
 import com.example.falleterbev2.domain.letter.domain.Letter;
 import com.example.falleterbev2.domain.letter.domain.repository.LetterRepository;
 import com.example.falleterbev2.domain.letter.presentation.dto.response.LettersFindReceivedResponse;
+import com.example.falleterbev2.domain.user.domain.User;
 import com.example.falleterbev2.domain.user.facade.UserFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -17,8 +18,8 @@ public class LettersFindReceivedService {
 
     @Transactional(readOnly = true)
     public List<LettersFindReceivedResponse> findLettersReceived() {
-        Long receiverId = userFacade.currentUserId();
-        List<Letter> letters = letterRepository.findByReceiver(receiverId);
+        User receiver = userFacade.currentUser();
+        List<Letter> letters = letterRepository.findByReceiver(receiver);
         return letters.stream()
                 .map(letter -> new LettersFindReceivedResponse(
                         letter.getId(),
