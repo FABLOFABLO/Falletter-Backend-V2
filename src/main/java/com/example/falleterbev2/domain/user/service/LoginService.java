@@ -32,6 +32,6 @@ public class LoginService {
         String refreshToken =
                 jwtTokenProvider.generateRefreshToken(user.getEmail());
 
-            return new LoginResponse(accessToken, refreshToken);
+        return new LoginResponse(accessToken, refreshToken);
     }
 }

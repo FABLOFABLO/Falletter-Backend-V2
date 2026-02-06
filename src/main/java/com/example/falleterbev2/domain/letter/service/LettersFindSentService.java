@@ -18,7 +18,7 @@ public class LettersFindSentService {
     @Transactional(readOnly = true)
     public List<LetterFindSentResponse> findLettersSend() {
         Long SenderId = userFacade.currentUserId();
-        List<Letter> letters = letterRepository.findBySender_Id(SenderId);
+        List<Letter> letters = letterRepository.findBySender(SenderId);
 
         return letters.stream()
                 .map(letter -> new LetterFindSentResponse(

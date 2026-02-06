@@ -17,5 +17,4 @@ public class LetterReadSentService {
                 .orElseThrow(() -> NotFoundSentLetterException.EXCEPTION);
         return new LetterReadSentResponse(letter);
     }
-
 }

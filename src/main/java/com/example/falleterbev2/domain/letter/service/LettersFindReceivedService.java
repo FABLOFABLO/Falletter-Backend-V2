@@ -18,7 +18,7 @@ public class LettersFindReceivedService {
     @Transactional(readOnly = true)
     public List<LettersFindReceivedResponse> findLettersReceived() {
         Long receiverId = userFacade.currentUserId();
-        List<Letter> letters = letterRepository.findByReceiver_Id(receiverId);
+        List<Letter> letters = letterRepository.findByReceiver(receiverId);
         return letters.stream()
                 .map(letter -> new LettersFindReceivedResponse(
                         letter.getId(),

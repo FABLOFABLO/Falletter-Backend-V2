@@ -26,10 +26,6 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers(
-                                "/user/login",
-                                "/user/signup"
-                        ).permitAll()
                         //feed
                         .requestMatchers(HttpMethod.POST, "/feed/create").authenticated()
                         .requestMatchers(HttpMethod.GET, "/feed/readAll").authenticated()
@@ -45,6 +41,8 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.POST, "/letters/send").authenticated()
                         .requestMatchers(HttpMethod.GET, "/letters/get-list/received").authenticated()
                         .requestMatchers(HttpMethod.GET, "/letters/get-list/send").authenticated()
+                        .requestMatchers(HttpMethod.GET, "/letters/received/{id}").authenticated()
+                        .requestMatchers(HttpMethod.GET, "/letters/sent/{id}").authenticated()
 
                         .anyRequest().permitAll()
                 )

@@ -7,6 +7,6 @@ import java.util.List;
 
 @Repository
 public interface LetterRepository extends JpaRepository<Letter, Long> {
-    List<Letter> findByReceiver_Id(Long receiverId);
-    List<Letter> findBySender_Id(Long senderId);
+    List<Letter> findByReceiver(Long receiverId);
+    List<Letter> findBySender(Long senderId);
 }

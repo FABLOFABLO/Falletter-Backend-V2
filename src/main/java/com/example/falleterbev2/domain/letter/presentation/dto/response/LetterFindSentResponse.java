@@ -1,7 +1,6 @@
 package com.example.falleterbev2.domain.letter.presentation.dto.response;
 
 import lombok.Getter;
-
 import java.time.LocalDateTime;
 
 @Getter
