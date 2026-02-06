@@ -14,5 +14,4 @@ public class LetterReadReceivedResponse {
         this.receiverName = letter.getReceiver().getName();
         this.content = letter.getContent();
     }
-
 }
