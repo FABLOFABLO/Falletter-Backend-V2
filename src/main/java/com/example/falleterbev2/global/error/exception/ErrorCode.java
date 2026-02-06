@@ -1,8 +1,5 @@
 package com.example.falleterbev2.global.error.exception;
 
-import com.example.falleterbev2.domain.comment.exception.CommentOnlyAuthorDeleteException;
-import com.example.falleterbev2.domain.letter.exception.NotFoundReceivedLetterException;
-import com.example.falleterbev2.domain.letter.presentation.dto.response.LetterReadReceivedResponse;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -25,8 +22,9 @@ public enum ErrorCode {
     NotFoundSentLetter(404, "해당 보낸 레터를 찾을수없습니다"),
 
     //comment
-    CommentOnlyAuthorDelete(403 , "오직 자신의 댓글만 삭제 가능합니다"),
+    CommentOnlyAuthor(403 , "오직 자신의 댓글만 삭제 가능합니다"),
     CommentNotFound(404 , "해당 댓글을 찾을수없습니다");
+
     private final Integer status;
     private final String message;
 }

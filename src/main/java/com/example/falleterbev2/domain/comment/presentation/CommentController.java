@@ -1,8 +1,10 @@
 package com.example.falleterbev2.domain.comment.presentation;
 
 import com.example.falleterbev2.domain.comment.presentation.dto.request.CommentCreateRequest;
+import com.example.falleterbev2.domain.comment.presentation.dto.request.CommentUpdateRequest;
 import com.example.falleterbev2.domain.comment.service.CommentCreateService;
 import com.example.falleterbev2.domain.comment.service.CommentDeleteService;
+import com.example.falleterbev2.domain.comment.service.CommentUpdateService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 public class CommentController {
     private final CommentCreateService commentCreateService;
     private final CommentDeleteService commentDeleteService;
+    private final CommentUpdateService commentUpdateService;
 
     @PostMapping("/{feedId}")
     @ResponseStatus(HttpStatus.CREATED)
@@ -24,6 +27,12 @@ public class CommentController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteComment(@PathVariable Long id) {
         commentDeleteService.deleteComment(id);
+    }
+
+    @PatchMapping("/update/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public void updateComment(@PathVariable Long id,@RequestBody CommentUpdateRequest commentUpdateRequest) {
+        commentUpdateService.updateComment(id, commentUpdateRequest);
     }
 
 }

@@ -35,4 +35,8 @@ public class Comment {
     @CreatedDate
     @Column(nullable = false)
     private LocalDateTime createdAt;
+
+    public void update(String content){
+        this.content = content;
+    }
 }
