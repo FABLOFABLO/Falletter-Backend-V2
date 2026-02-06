@@ -3,7 +3,7 @@ package com.example.falleterbev2.domain.comment.service;
 import com.example.falleterbev2.domain.comment.domain.Comment;
 import com.example.falleterbev2.domain.comment.domain.repository.CommentRepository;
 import com.example.falleterbev2.domain.comment.exception.CommentNotFoundException;
-import com.example.falleterbev2.domain.comment.exception.CommentOnlyAuthorException;
+import com.example.falleterbev2.domain.comment.exception.CommentOnlyAuthorDeleteException;
 import com.example.falleterbev2.domain.user.facade.UserFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -18,7 +18,7 @@ public class CommentDeleteService {
                 .orElseThrow(() -> CommentNotFoundException.EXCEPTION);
 
         if (!comment.getUser().getId().equals(userFacade.currentUserId())) {
-            throw CommentOnlyAuthorException.EXCEPTION;
+            throw CommentOnlyAuthorDeleteException.EXCEPTION;
         }
 
         commentRepository.delete(comment);

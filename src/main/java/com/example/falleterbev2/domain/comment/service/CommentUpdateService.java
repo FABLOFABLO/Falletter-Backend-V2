@@ -3,7 +3,8 @@ package com.example.falleterbev2.domain.comment.service;
 import com.example.falleterbev2.domain.comment.domain.Comment;
 import com.example.falleterbev2.domain.comment.domain.repository.CommentRepository;
 import com.example.falleterbev2.domain.comment.exception.CommentNotFoundException;
-import com.example.falleterbev2.domain.comment.exception.CommentOnlyAuthorException;
+import com.example.falleterbev2.domain.comment.exception.CommentOnlyAuthorDeleteException;
+import com.example.falleterbev2.domain.comment.exception.CommentOnlyAuthorUpdateException;
 import com.example.falleterbev2.domain.comment.presentation.dto.request.CommentUpdateRequest;
 import com.example.falleterbev2.domain.user.facade.UserFacade;
 import lombok.RequiredArgsConstructor;
@@ -20,7 +21,7 @@ public class CommentUpdateService {
                 .orElseThrow(() -> CommentNotFoundException.EXCEPTION);
 
         if(!comment.getUser().getId().equals(userFacade.currentUserId())) {
-            throw CommentOnlyAuthorException.EXCEPTION;
+            throw CommentOnlyAuthorUpdateException.EXCEPTION;
         }
 
         comment.update(commentUpdateRequest.getContent());
