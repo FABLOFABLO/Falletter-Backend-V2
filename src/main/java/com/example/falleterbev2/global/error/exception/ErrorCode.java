@@ -1,7 +1,5 @@
 package com.example.falleterbev2.global.error.exception;
 
-import com.example.falleterbev2.domain.letter.exception.NotFoundReceivedLetterException;
-import com.example.falleterbev2.domain.letter.presentation.dto.response.LetterReadReceivedResponse;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -21,7 +19,13 @@ public enum ErrorCode {
     NotFoundReceivedUser(404, "레터를 받을 유저를 찾을수 없습니다."),
     NotFoundSentUser(404, "레터를 보낸 유저를 찾을수 없습니다"),
     NotFoundReceivedLetter(404, "해당 받은 레터를 찾을수없습니다"),
-    NotFoundSentLetter(404, "해당 보낸 레터를 찾을수없습니다");
+    NotFoundSentLetter(404, "해당 보낸 레터를 찾을수없습니다"),
+
+    //comment
+    CommentOnlyAuthorDelete(403 , "오직 자신의 댓글만 삭제 가능합니다"),
+    CommentOnlyAuthorUpdate(403 , "오직 자신의 댓글만 수정 가능합니다"),
+    CommentNotFound(404 , "해당 댓글을 찾을수없습니다");
+
 
     private final Integer status;
     private final String message;
