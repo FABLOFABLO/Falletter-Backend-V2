@@ -15,6 +15,9 @@ public enum ErrorCode {
     FeedNotFound(404, "존재하지 않는 게시물입니다"),
     OnlyAuthorUpdateFeed(403, "자신의 게시물만 삭제 가능합니다"),
 
+    //question
+    UserNotEnough(409, "질문을 구성하기위한 유저가 부족합니다"),
+
     //letter
     NotFoundReceivedUser(404, "레터를 받을 유저를 찾을수 없습니다."),
     NotFoundSentUser(404, "레터를 보낸 유저를 찾을수 없습니다"),
