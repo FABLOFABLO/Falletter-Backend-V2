@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 public class CommentDeleteService {
     private final CommentRepository commentRepository;
     private final UserFacade userFacade;
-    public void deleteComment(Long commentId) {
+    public void execute(Long commentId) {
         Comment comment = commentRepository.findById(commentId)
                 .orElseThrow(() -> CommentNotFoundException.EXCEPTION);
 

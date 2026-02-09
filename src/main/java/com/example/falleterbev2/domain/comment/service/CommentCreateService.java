@@ -20,7 +20,7 @@ public class CommentCreateService {
     private final UserFacade userFacade;
 
     @Transactional
-    public void createComment(Long feedId, CommentCreateRequest request) {
+    public void execute(Long feedId, CommentCreateRequest request) {
         User user = userFacade.currentUser();
         Feed feed = feedRepository.findById(feedId).orElseThrow(() -> FeedNotFoundException.EXCEPTION);
 

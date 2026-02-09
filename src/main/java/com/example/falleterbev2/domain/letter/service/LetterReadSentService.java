@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 public class LetterReadSentService {
     private final LetterRepository letterRepository;
 
-    public LetterReadSentResponse readSentLetter(Long id) {
+    public LetterReadSentResponse execute(Long id) {
         Letter letter = letterRepository.findById(id)
                 .orElseThrow(() -> NotFoundSentLetterException.EXCEPTION);
         return new LetterReadSentResponse(letter);
