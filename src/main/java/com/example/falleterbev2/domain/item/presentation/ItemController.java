@@ -18,6 +18,6 @@ public class ItemController {
     @GetMapping("/amount")
     @ResponseStatus(HttpStatus.OK)
     public ItemResponse getItemAmount() {
-        return itemAmountReadService.getItemAmount();
+        return itemAmountReadService.execute();
     }
 }

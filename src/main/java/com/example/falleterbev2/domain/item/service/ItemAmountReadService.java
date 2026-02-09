@@ -16,10 +16,9 @@ public class ItemAmountReadService {
     private final UserFacade userFacade;
 
     @Transactional
-    public ItemResponse getItemAmount() {
+    public ItemResponse execute() {
         Long userId = userFacade.currentUserId();
         Item item = itemRepository.findByUserId(userId).orElseThrow(()-> ItemNotFoundException.EXCEPTION);
         return new ItemResponse(item);
     }
 }
-
