@@ -20,19 +20,19 @@ public class CommentController {
     @PostMapping("/{feedId}")
     @ResponseStatus(HttpStatus.CREATED)
     public void createComment(@PathVariable Long feedId, @RequestBody CommentCreateRequest commentCreateRequest) {
-        commentCreateService.createComment(feedId, commentCreateRequest);
+        commentCreateService.execute(feedId, commentCreateRequest);
     }
 
     @DeleteMapping("/delete/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteComment(@PathVariable Long id) {
-        commentDeleteService.deleteComment(id);
+        commentDeleteService.execute(id);
     }
 
     @PatchMapping("/update/{id}")
     @ResponseStatus(HttpStatus.OK)
     public void updateComment(@PathVariable Long id,@RequestBody CommentUpdateRequest commentUpdateRequest) {
-        commentUpdateService.updateComment(id, commentUpdateRequest);
+        commentUpdateService.execute(id, commentUpdateRequest);
     }
 
 }

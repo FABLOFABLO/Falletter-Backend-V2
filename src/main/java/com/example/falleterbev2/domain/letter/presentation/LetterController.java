@@ -29,30 +29,30 @@ public class LetterController {
     @PostMapping("/send")
     @ResponseStatus(HttpStatus.OK)
     public void sendLetter(@RequestBody LettersSendRequest lettersSendRequest) {
-        lettersSendService.sendLetter(lettersSendRequest);
+        lettersSendService.execute(lettersSendRequest);
     }
 
     @GetMapping("/get-list/received")
     @ResponseStatus(HttpStatus.OK)
     public List<LettersFindReceivedResponse> findLettersReceived() {
-        return lettersFindReceivedService.findLettersReceived();
+        return lettersFindReceivedService.execute();
     }
 
     @GetMapping("/get-list/send")
     @ResponseStatus(HttpStatus.OK)
     public List<LetterFindSentResponse> findLettersSend() {
-        return lettersFindSentService.findLettersSend();
+        return lettersFindSentService.execute();
     }
 
     @GetMapping("/received/{id}")
     @ResponseStatus(HttpStatus.OK)
     public LetterReadReceivedResponse readReceivedLetter(@PathVariable Long id) {
-        return letterReadReceivedService.readReceivedLetter(id);
+        return letterReadReceivedService.execute(id);
     }
 
     @GetMapping("/sent/{id}")
     @ResponseStatus(HttpStatus.OK)
     public LetterReadSentResponse readSentLetter(@PathVariable Long id) {
-        return letterReadSentService.readSentLetter(id);
+        return letterReadSentService.execute(id);
     }
 }

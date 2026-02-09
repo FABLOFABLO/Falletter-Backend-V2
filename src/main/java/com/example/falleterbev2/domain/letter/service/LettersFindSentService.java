@@ -17,7 +17,7 @@ public class LettersFindSentService {
     private final UserFacade userFacade;
 
     @Transactional(readOnly = true)
-    public List<LetterFindSentResponse> findLettersSend() {
+    public List<LetterFindSentResponse> execute() {
         User Sender = userFacade.currentUser();
         List<Letter> letters = letterRepository.findBySender(Sender);
 

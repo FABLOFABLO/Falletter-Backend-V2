@@ -14,7 +14,7 @@ public class LetterReadReceivedService {
     private final LetterRepository letterRepository;
 
     @Transactional(readOnly = true)
-    public LetterReadReceivedResponse readReceivedLetter(Long id) {
+    public LetterReadReceivedResponse execute(Long id) {
         Letter letter = letterRepository.findById(id)
                 .orElseThrow(() -> NotFoundReceivedLetterException.EXCEPTION);
         return new LetterReadReceivedResponse(letter);
