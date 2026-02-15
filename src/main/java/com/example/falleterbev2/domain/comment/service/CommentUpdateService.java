@@ -4,7 +4,7 @@ import com.example.falleterbev2.domain.comment.domain.Comment;
 import com.example.falleterbev2.domain.comment.domain.repository.CommentRepository;
 import com.example.falleterbev2.domain.comment.exception.CommentNotFoundException;
 import com.example.falleterbev2.domain.comment.exception.CommentOnlyAuthorUpdateException;
-import com.example.falleterbev2.domain.comment.presentation.dto.request.CommentUpdateRequest;
+import com.example.falleterbev2.domain.comment.presentation.dto.request.CommentRequest;
 import com.example.falleterbev2.domain.user.facade.UserFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -15,7 +15,7 @@ public class CommentUpdateService {
     private final CommentRepository commentRepository;
     private final UserFacade userFacade;
 
-    public void execute(Long commentId, CommentUpdateRequest commentUpdateRequest) {
+    public void execute(Long commentId, CommentRequest commentRequest) {
         Comment comment = commentRepository.findById(commentId)
                 .orElseThrow(() -> CommentNotFoundException.EXCEPTION);
 
@@ -23,7 +23,7 @@ public class CommentUpdateService {
             throw CommentOnlyAuthorUpdateException.EXCEPTION;
         }
 
-        comment.update(commentUpdateRequest.getContent());
+        comment.update(commentRequest.getContent());
         commentRepository.save(comment);
 
     }
