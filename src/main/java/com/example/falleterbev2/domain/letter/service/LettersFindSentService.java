@@ -2,7 +2,7 @@ package com.example.falleterbev2.domain.letter.service;
 
 import com.example.falleterbev2.domain.letter.domain.Letter;
 import com.example.falleterbev2.domain.letter.domain.repository.LetterRepository;
-import com.example.falleterbev2.domain.letter.presentation.dto.response.LetterFindSentResponse;
+import com.example.falleterbev2.domain.letter.presentation.dto.response.LettersFindSentResponse;
 import com.example.falleterbev2.domain.user.domain.User;
 import com.example.falleterbev2.domain.user.facade.UserFacade;
 import lombok.RequiredArgsConstructor;
@@ -17,12 +17,12 @@ public class LettersFindSentService {
     private final UserFacade userFacade;
 
     @Transactional(readOnly = true)
-    public List<LetterFindSentResponse> execute() {
+    public List<LettersFindSentResponse> execute() {
         User Sender = userFacade.currentUser();
         List<Letter> letters = letterRepository.findBySender(Sender);
 
         return letters.stream()
-                .map(letter -> new LetterFindSentResponse(
+                .map(letter -> new LettersFindSentResponse(
                         letter.getId(),
                         letter.getReceiver().getName(),
                         letter.getReceiver().getBatch(),

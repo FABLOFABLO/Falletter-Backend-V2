@@ -1,9 +1,8 @@
 package com.example.falleterbev2.domain.letter.presentation;
 
-import com.example.falleterbev2.domain.letter.presentation.dto.request.LettersSendRequest;
-import com.example.falleterbev2.domain.letter.presentation.dto.response.LetterFindSentResponse;
-import com.example.falleterbev2.domain.letter.presentation.dto.response.LetterReadReceivedResponse;
-import com.example.falleterbev2.domain.letter.presentation.dto.response.LetterReadSentResponse;
+import com.example.falleterbev2.domain.letter.presentation.dto.request.LettersRequest;
+import com.example.falleterbev2.domain.letter.presentation.dto.response.LettersFindSentResponse;
+import com.example.falleterbev2.domain.letter.presentation.dto.response.LettersResponse;
 import com.example.falleterbev2.domain.letter.presentation.dto.response.LettersFindReceivedResponse;
 import com.example.falleterbev2.domain.letter.service.*;
 import lombok.RequiredArgsConstructor;
@@ -28,7 +27,7 @@ public class LetterController {
 
     @PostMapping("/send")
     @ResponseStatus(HttpStatus.OK)
-    public void sendLetter(@RequestBody LettersSendRequest lettersSendRequest) {
+    public void sendLetter(@RequestBody LettersRequest lettersSendRequest) {
         lettersSendService.execute(lettersSendRequest);
     }
 
@@ -40,19 +39,19 @@ public class LetterController {
 
     @GetMapping("/get-list/send")
     @ResponseStatus(HttpStatus.OK)
-    public List<LetterFindSentResponse> findLettersSend() {
+    public List<LettersFindSentResponse> findLettersSend() {
         return lettersFindSentService.execute();
     }
 
     @GetMapping("/received/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public LetterReadReceivedResponse readReceivedLetter(@PathVariable Long id) {
+    public LettersResponse readReceivedLetter(@PathVariable Long id) {
         return letterReadReceivedService.execute(id);
     }
 
     @GetMapping("/sent/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public LetterReadSentResponse readSentLetter(@PathVariable Long id) {
+    public LettersResponse readSentLetter(@PathVariable Long id) {
         return letterReadSentService.execute(id);
     }
 }
