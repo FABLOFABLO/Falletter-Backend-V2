@@ -5,9 +5,9 @@ import com.example.falleterbev2.domain.item.domain.repository.ItemRepository;
 import com.example.falleterbev2.domain.item.exception.ItemNotFoundException;
 import com.example.falleterbev2.domain.item.presentation.dto.response.ItemResponse;
 import com.example.falleterbev2.domain.user.facade.UserFacade;
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
