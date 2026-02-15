@@ -1,7 +1,6 @@
 package com.example.falleterbev2.domain.comment.presentation;
 
-import com.example.falleterbev2.domain.comment.presentation.dto.request.CommentCreateRequest;
-import com.example.falleterbev2.domain.comment.presentation.dto.request.CommentUpdateRequest;
+import com.example.falleterbev2.domain.comment.presentation.dto.request.CommentRequest;
 import com.example.falleterbev2.domain.comment.service.CommentCreateService;
 import com.example.falleterbev2.domain.comment.service.CommentDeleteService;
 import com.example.falleterbev2.domain.comment.service.CommentUpdateService;
@@ -19,7 +18,7 @@ public class CommentController {
 
     @PostMapping("/{feedId}")
     @ResponseStatus(HttpStatus.CREATED)
-    public void createComment(@PathVariable Long feedId, @RequestBody CommentCreateRequest commentCreateRequest) {
+    public void createComment(@PathVariable Long feedId, @RequestBody CommentRequest commentCreateRequest) {
         commentCreateService.execute(feedId, commentCreateRequest);
     }
 
@@ -31,8 +30,8 @@ public class CommentController {
 
     @PatchMapping("/update/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public void updateComment(@PathVariable Long id,@RequestBody CommentUpdateRequest commentUpdateRequest) {
-        commentUpdateService.execute(id, commentUpdateRequest);
+    public void updateComment(@PathVariable Long id,@RequestBody CommentRequest commentRequest) {
+        commentUpdateService.execute(id, commentRequest);
     }
 
 }
