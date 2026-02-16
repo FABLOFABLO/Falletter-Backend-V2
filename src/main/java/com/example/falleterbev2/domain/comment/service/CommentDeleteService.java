@@ -7,12 +7,15 @@ import com.example.falleterbev2.domain.comment.exception.CommentOnlyAuthorDelete
 import com.example.falleterbev2.domain.user.facade.UserFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
 public class CommentDeleteService {
     private final CommentRepository commentRepository;
     private final UserFacade userFacade;
+
+    @Transactional
     public void execute(Long commentId) {
         Comment comment = commentRepository.findById(commentId)
                 .orElseThrow(() -> CommentNotFoundException.EXCEPTION);

@@ -9,6 +9,7 @@ import com.example.falleterbev2.domain.user.domain.repository.UserRepository;
 import com.example.falleterbev2.domain.user.facade.UserFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
@@ -18,6 +19,7 @@ public class LettersSendService {
     private final UserRepository userRepository;
     private final UserFacade userFacade;
 
+    @Transactional
     public void execute(LettersSendRequest request) {
 
         User sender = userFacade.currentUser();

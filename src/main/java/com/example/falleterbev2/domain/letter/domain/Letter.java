@@ -7,14 +7,13 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import java.time.LocalDateTime;
 
+@Entity
 @Table(name = "tbl_letter")
+@EntityListeners(AuditingEntityListener.class)
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Builder
-@EntityListeners(AuditingEntityListener.class)
-@Entity
-
 public class Letter {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
