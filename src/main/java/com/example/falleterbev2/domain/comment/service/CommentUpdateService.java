@@ -8,6 +8,7 @@ import com.example.falleterbev2.domain.comment.presentation.dto.request.CommentR
 import com.example.falleterbev2.domain.user.facade.UserFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
@@ -15,6 +16,7 @@ public class CommentUpdateService {
     private final CommentRepository commentRepository;
     private final UserFacade userFacade;
 
+    @Transactional
     public void execute(Long commentId, CommentRequest commentUpdateRequest) {
         Comment comment = commentRepository.findById(commentId)
                 .orElseThrow(() -> CommentNotFoundException.EXCEPTION);
