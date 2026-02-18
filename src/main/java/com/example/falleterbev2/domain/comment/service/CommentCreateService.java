@@ -2,7 +2,7 @@ package com.example.falleterbev2.domain.comment.service;
 
 import com.example.falleterbev2.domain.comment.domain.Comment;
 import com.example.falleterbev2.domain.comment.domain.repository.CommentRepository;
-import com.example.falleterbev2.domain.comment.presentation.dto.request.CommentCreateRequest;
+import com.example.falleterbev2.domain.comment.presentation.dto.request.CommentRequest;
 import com.example.falleterbev2.domain.feed.domain.Feed;
 import com.example.falleterbev2.domain.feed.domain.repository.FeedRepository;
 import com.example.falleterbev2.domain.feed.exception.FeedNotFoundException;
@@ -20,7 +20,7 @@ public class CommentCreateService {
     private final UserFacade userFacade;
 
     @Transactional
-    public void execute(Long feedId, CommentCreateRequest request) {
+    public void execute(Long feedId, CommentRequest request) {
         User user = userFacade.currentUser();
         Feed feed = feedRepository.findById(feedId).orElseThrow(() -> FeedNotFoundException.EXCEPTION);
 

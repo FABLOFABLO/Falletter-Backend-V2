@@ -4,12 +4,12 @@ import com.example.falleterbev2.domain.letter.domain.Letter;
 import lombok.Getter;
 
 @Getter
-public class LetterReadReceivedResponse {
+public class LettersResponse {
     private final Long letterId;
     private final String receiverName;
     private final String content;
 
-    public LetterReadReceivedResponse(Letter letter) {
+    public LettersResponse(Letter letter) {
         this.letterId = letter.getId();
         this.receiverName = letter.getReceiver().getName();
         this.content = letter.getContent();
