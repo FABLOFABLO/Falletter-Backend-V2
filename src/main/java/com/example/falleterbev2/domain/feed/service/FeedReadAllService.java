@@ -2,7 +2,7 @@ package com.example.falleterbev2.domain.feed.service;
 
 import com.example.falleterbev2.domain.feed.domain.Feed;
 import com.example.falleterbev2.domain.feed.domain.repository.FeedRepository;
-import com.example.falleterbev2.domain.feed.presentation.dto.reponse.FeedAllResponse;
+import com.example.falleterbev2.domain.feed.presentation.dto.response.FeedAllResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

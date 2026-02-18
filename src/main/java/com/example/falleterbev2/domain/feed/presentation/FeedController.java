@@ -1,6 +1,6 @@
 package com.example.falleterbev2.domain.feed.presentation;
 
-import com.example.falleterbev2.domain.feed.presentation.dto.reponse.FeedAllResponse;
+import com.example.falleterbev2.domain.feed.presentation.dto.response.FeedAllResponse;
 import com.example.falleterbev2.domain.feed.presentation.dto.request.FeedRequest;
 import com.example.falleterbev2.domain.feed.service.FeedCreateService;
 import com.example.falleterbev2.domain.feed.service.FeedDeleteService;
@@ -23,25 +23,25 @@ public class FeedController {
 
     @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
-    public void FeedCreate(@Valid @RequestBody FeedRequest feedRequest) {
+    public void createFeed(@Valid @RequestBody FeedRequest feedRequest) {
         feedCreateService.execute(feedRequest);
     }
 
     @GetMapping("/readAll")
     @ResponseStatus(HttpStatus.OK)
-    public List<FeedAllResponse> FeedReadAll() {
+    public List<FeedAllResponse> readAllFeed() {
         return feedReadAllService.execute();
     }
 
     @PatchMapping("/update/{feed-id}")
     @ResponseStatus(HttpStatus.OK)
-    public void FeedUpdate(@Valid @PathVariable("feed-id") Long feedId, @RequestBody FeedRequest feedRequest) {
+    public void updateFeed(@Valid @PathVariable("feed-id") Long feedId, @RequestBody FeedRequest feedRequest) {
         feedUpdateService.execute(feedId, feedRequest);
     }
 
     @DeleteMapping("/delete/{feed-id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void FeedDelete(@PathVariable("feed-id") Long feedId) {
+    public void deleteFeed(@PathVariable("feed-id") Long feedId) {
         feedDeleteService.execute(feedId);
     }
 }
