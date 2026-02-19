@@ -1,4 +1,4 @@
-package com.example.falleterbev2.domain.feed.presentation.dto.reponse;
+package com.example.falleterbev2.domain.feed.presentation.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
