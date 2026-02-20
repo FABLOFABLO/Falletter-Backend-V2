@@ -26,7 +26,5 @@ public class CommentUpdateService {
         }
 
         comment.update(commentUpdateRequest.getContent());
-        commentRepository.save(comment);
-
     }
 }
