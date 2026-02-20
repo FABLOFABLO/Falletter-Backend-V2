@@ -33,5 +33,4 @@ public class CommentController {
     public void updateComment(@PathVariable Long id,@RequestBody CommentRequest commentRequest) {
         commentUpdateService.execute(id, commentRequest);
     }
-
 }
