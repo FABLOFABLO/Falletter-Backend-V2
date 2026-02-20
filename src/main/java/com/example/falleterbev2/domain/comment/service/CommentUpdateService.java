@@ -24,7 +24,6 @@ public class CommentUpdateService {
         if(!comment.getUser().getId().equals(userFacade.currentUserId())) {
             throw CommentOnlyAuthorUpdateException.EXCEPTION;
         }
-
         comment.update(commentUpdateRequest.getContent());
     }
 }
