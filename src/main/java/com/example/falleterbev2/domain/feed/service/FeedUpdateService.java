@@ -7,9 +7,9 @@ import com.example.falleterbev2.domain.feed.exception.OnlyAuthorUpdateFeedExcept
 import com.example.falleterbev2.domain.feed.presentation.dto.request.FeedRequest;
 import com.example.falleterbev2.domain.user.domain.User;
 import com.example.falleterbev2.domain.user.facade.UserFacade;
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor

@@ -19,14 +19,7 @@ public class FeedReadAllService {
 
         List<FeedAllResponse> feedAllResponses = feeds.stream()
                 .map(feed ->
-                        FeedAllResponse.builder()
-                                .userId(feed.getUser().getId())
-                                .feedId(feed.getId())
-                                .author(feed.getUser().getName())
-                                .title(feed.getTitle())
-                                .content(feed.getContent())
-                                .createdAt(feed.getCreatedAt())
-                                .build()
+                        new FeedAllResponse(feed)
                 ).toList();
         return feedAllResponses;
     }

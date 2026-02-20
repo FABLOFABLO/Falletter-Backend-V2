@@ -7,6 +7,7 @@ import com.example.falleterbev2.domain.feed.exception.OnlyAuthorUpdateFeedExcept
 import com.example.falleterbev2.domain.user.facade.UserFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
@@ -14,6 +15,7 @@ public class FeedDeleteService {
     private final FeedRepository feedRepository;
     private final UserFacade userFacade;
 
+    @Transactional
     public void execute(Long feedId) {
         Feed feed = feedRepository.findById(feedId)
                 .orElseThrow(()-> FeedNotFoundException.EXCEPTION);
