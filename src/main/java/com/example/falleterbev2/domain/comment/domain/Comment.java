@@ -29,11 +29,11 @@ public class Comment {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @Column(nullable = false)
+    @Column(name = "content", nullable = false)
     private String content;
 
     @CreatedDate
-    @Column(nullable = false)
+    @Column(name = "created_at", nullable = false)
     private LocalDateTime createdAt;
 
     public void update(String content){
