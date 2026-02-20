@@ -28,7 +28,7 @@ public class Letter {
     @JoinColumn(name = "sender_id",nullable = false)
     private User sender;
 
-    @Column(nullable = false)
+    @Column(name = "content", nullable = false)
     private String content;
 
     @CreatedDate
