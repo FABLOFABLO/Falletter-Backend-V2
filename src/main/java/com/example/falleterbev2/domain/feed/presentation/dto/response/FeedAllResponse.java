@@ -1,15 +1,10 @@
 package com.example.falleterbev2.domain.feed.presentation.dto.response;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
+import com.example.falleterbev2.domain.feed.domain.Feed;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 
 @Getter
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
 public class FeedAllResponse {
     private Long userId;
     private Long feedId;
@@ -17,4 +12,13 @@ public class FeedAllResponse {
     private String title;
     private String content;
     private LocalDateTime createdAt;
+
+    public FeedAllResponse(Feed feed) {
+        this.userId = feed.getUser().getId();
+        this.feedId = feed.getId();
+        this.author = feed.getUser().getName();
+        this.title = feed.getTitle();
+        this.content = feed.getContent();
+        this.createdAt = feed.getCreatedAt();
+    }
 }
