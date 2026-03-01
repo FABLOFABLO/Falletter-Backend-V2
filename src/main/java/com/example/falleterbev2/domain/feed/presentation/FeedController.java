@@ -2,10 +2,8 @@ package com.example.falleterbev2.domain.feed.presentation;
 
 import com.example.falleterbev2.domain.feed.presentation.dto.response.FeedAllResponse;
 import com.example.falleterbev2.domain.feed.presentation.dto.request.FeedRequest;
-import com.example.falleterbev2.domain.feed.service.FeedCreateService;
-import com.example.falleterbev2.domain.feed.service.FeedDeleteService;
-import com.example.falleterbev2.domain.feed.service.FeedReadAllService;
-import com.example.falleterbev2.domain.feed.service.FeedUpdateService;
+import com.example.falleterbev2.domain.feed.presentation.dto.response.FeedDetailResponse;
+import com.example.falleterbev2.domain.feed.service.*;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -20,6 +18,7 @@ public class FeedController {
     private final FeedReadAllService feedReadAllService;
     private final FeedUpdateService feedUpdateService;
     private final FeedDeleteService feedDeleteService;
+    private final FeedReadDetailService feedReadDetailService;
 
     @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
@@ -43,5 +42,11 @@ public class FeedController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteFeed(@PathVariable("feed-id") Long feedId) {
         feedDeleteService.execute(feedId);
+    }
+
+    @GetMapping("/readDetail/{feed-id}")
+    @ResponseStatus(HttpStatus.OK)
+    public FeedDetailResponse readDetailFeed(@PathVariable("feed-id") Long feedId) {
+        return feedReadDetailService.execute(feedId);
     }
 }

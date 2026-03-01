@@ -31,6 +31,7 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.GET, "/feed/readAll").authenticated()
                         .requestMatchers(HttpMethod.PATCH, "/feed/update/{feed-id}").authenticated()
                         .requestMatchers(HttpMethod.DELETE, "/feed/delete/{feed-id}").authenticated()
+                        .requestMatchers(HttpMethod.GET, "/feed/readDetail/{feed-id}").authenticated()
 
                         //user
                         .requestMatchers(HttpMethod.POST,"/user/signup").permitAll()

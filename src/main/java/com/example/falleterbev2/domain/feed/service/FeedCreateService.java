@@ -15,7 +15,7 @@ public class FeedCreateService {
     private final FeedRepository feedRepository;
     private final UserFacade userFacade;
 
-    @Transactional(readOnly = true)
+    @Transactional
     public void execute(FeedRequest feedRequest) {
         User user = userFacade.currentUser();
         feedRepository.save(
