@@ -30,7 +30,5 @@ public class CommentCreateService {
                         .feed(feed)
                         .content(request.getContent())
                 .build());
-
-        feed.countUp();
     }
 }

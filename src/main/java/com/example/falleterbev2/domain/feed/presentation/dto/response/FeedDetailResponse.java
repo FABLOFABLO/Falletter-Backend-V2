@@ -1,6 +1,5 @@
 package com.example.falleterbev2.domain.feed.presentation.dto.response;
 
-import com.example.falleterbev2.domain.comment.domain.Comment;
 import com.example.falleterbev2.domain.comment.presentation.dto.CommentResponse;
 import com.example.falleterbev2.domain.feed.domain.Feed;
 import lombok.Getter;

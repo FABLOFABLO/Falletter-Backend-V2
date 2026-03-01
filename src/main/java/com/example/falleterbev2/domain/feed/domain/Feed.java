@@ -47,14 +47,11 @@ public class Feed {
         this.content = feedRequest.getContent();
     }
 
-    public void countUp() {
-//        if (this.commentCount == null) {
-//            this.commentCount = 0L;
-//        }
+    public void countUp() { // TODO : CommentCreateService에 추가하기
         this.commentCount += 1;
     }
 
-    public void countDown() {
+    public void countDown() { // TODO : CommentDeleteService에 추가하기
         if (this.commentCount == null || this.commentCount <= 0) {
             this.commentCount = 0L;
             return;
