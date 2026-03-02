@@ -4,7 +4,6 @@ import com.example.falleterbev2.domain.question.domain.Question;
 import com.example.falleterbev2.domain.user.domain.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-
 import java.util.List;
 
 public interface QuestionRepository extends JpaRepository<Question, Long> {

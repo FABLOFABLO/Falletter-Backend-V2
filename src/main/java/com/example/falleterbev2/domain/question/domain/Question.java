@@ -8,9 +8,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
+@Table(name = "tbl_question")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Table(name = "tbl_question")
 public class Question {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,38 +22,38 @@ public class Question {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_one", nullable = false)
-    private User userOne;
+    private User firstUser;
     @Column(name = "user_one_name", nullable = false)
-    private String userOneName;
+    private String firstUserName;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_two", nullable = false)
-    private User userTwo;
+    private User secondUser;
     @Column(name = "user_two_name", nullable = false)
-    private String userTwoName;
+    private String secondUserName;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_three", nullable = false)
-    private User userThree;
+    private User thirdUser;
     @Column(name = "user_three_name", nullable = false)
-    private String userThreeName;
+    private String thirdUserName;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_four", nullable = false)
-    private User userFour;
+    private User fourthUser;
     @Column(name = "user_four_name", nullable = false)
-    private String userFourName;
+    private String fourthUserName;
 
     @Builder
-    public Question(String question, User userOne, String userOneName, User userTwo, String userTwoName, User userThree, String userThreeName, User userFour, String userFourName) {
+    public Question(String question, User firstUser, String firstUserName, User secondUser, String secondUserName, User thirdUser, String thirdUserName, User fourthUser, String fourthUserName) {
         this.question = question;
-        this.userOne = userOne;
-        this.userOneName = userOneName;
-        this.userTwo = userTwo;
-        this.userTwoName = userTwoName;
-        this.userThree = userThree;
-        this.userThreeName = userThreeName;
-        this.userFour = userFour;
-        this.userFourName = userFourName;
+        this.firstUser = firstUser;
+        this.firstUserName = firstUserName;
+        this.secondUser = secondUser;
+        this.secondUserName = secondUserName;
+        this.thirdUser = thirdUser;
+        this.thirdUserName = thirdUserName;
+        this.fourthUser = fourthUser;
+        this.fourthUserName = fourthUserName;
     }
 }

@@ -8,6 +8,7 @@ import com.example.falleterbev2.domain.question.presentation.dto.response.Questi
 import com.example.falleterbev2.domain.user.domain.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
@@ -16,6 +17,7 @@ public class QuestionGetService {
     private final QuestionRepository questionRepository;
     private final QuestionList questionList;
 
+    @Transactional
     public QuestionGetResponse execute() {
         List<User> randomUser = questionRepository.GetRandomUsers();
         if(randomUser.size() < 4) {
@@ -24,14 +26,14 @@ public class QuestionGetService {
 
         Question question = Question.builder()
                 .question(questionList.getQuestion())
-                .userOne(randomUser.get(0))
-                .userOneName(randomUser.get(0).getName())
-                .userTwo(randomUser.get(1))
-                .userTwoName(randomUser.get(1).getName())
-                .userThree(randomUser.get(2))
-                .userThreeName(randomUser.get(2).getName())
-                .userFour(randomUser.get(3))
-                .userFourName(randomUser.get(3).getName())
+                .firstUser(randomUser.get(0))
+                .firstUserName(randomUser.get(0).getName())
+                .secondUser(randomUser.get(1))
+                .secondUserName(randomUser.get(1).getName())
+                .thirdUser(randomUser.get(2))
+                .thirdUserName(randomUser.get(2).getName())
+                .fourthUser(randomUser.get(3))
+                .fourthUserName(randomUser.get(3).getName())
                 .build();
 
         Long id = questionRepository.save(question).getId();

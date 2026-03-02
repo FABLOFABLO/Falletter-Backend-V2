@@ -4,7 +4,7 @@ import lombok.Getter;
 
 @Getter
 public class QuestionGetResponse {
-    private Long id;
+    private final Long id;
 
     public QuestionGetResponse(Long id) {
         this.id = id;
