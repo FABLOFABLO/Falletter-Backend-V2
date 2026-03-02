@@ -24,13 +24,13 @@ public class CommentCreateService {
         User user = userFacade.currentUser();
         Feed feed = feedRepository.findById(feedId).orElseThrow(() -> FeedNotFoundException.EXCEPTION);
 
-        feed.countUp();
-
         commentRepository.save(
                 Comment.builder()
                         .user(user)
                         .feed(feed)
                         .content(request.getContent())
                 .build());
+
+        feed.countUp();
     }
 }

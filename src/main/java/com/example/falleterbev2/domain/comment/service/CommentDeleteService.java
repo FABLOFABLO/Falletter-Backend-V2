@@ -24,8 +24,8 @@ public class CommentDeleteService {
             throw CommentOnlyAuthorDeleteException.EXCEPTION;
         }
 
-        comment.getFeed().countDown();
-
         commentRepository.delete(comment);
+
+        comment.getFeed().countDown();
     }
 }
