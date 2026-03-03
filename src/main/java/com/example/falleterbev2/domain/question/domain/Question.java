@@ -21,27 +21,27 @@ public class Question {
     private String question;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_one", nullable = false)
+    @JoinColumn(name = "first_user", nullable = false)
     private User firstUser;
-    @Column(name = "user_one_name", nullable = false)
+    @Column(name = "first_user_name", nullable = false)
     private String firstUserName;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_two", nullable = false)
+    @JoinColumn(name = "second_user", nullable = false)
     private User secondUser;
-    @Column(name = "user_two_name", nullable = false)
+    @Column(name = "second_user_name", nullable = false)
     private String secondUserName;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_three", nullable = false)
+    @JoinColumn(name = "third_user", nullable = false)
     private User thirdUser;
-    @Column(name = "user_three_name", nullable = false)
+    @Column(name = "third_user_name", nullable = false)
     private String thirdUserName;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_four", nullable = false)
+    @JoinColumn(name = "fourth_user", nullable = false)
     private User fourthUser;
-    @Column(name = "user_four_name", nullable = false)
+    @Column(name = "fourth_user_name", nullable = false)
     private String fourthUserName;
 
     @Builder
