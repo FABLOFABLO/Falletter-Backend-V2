@@ -25,5 +25,7 @@ public class CommentDeleteService {
         }
 
         commentRepository.delete(comment);
+
+        comment.getFeed().countDown();
     }
 }

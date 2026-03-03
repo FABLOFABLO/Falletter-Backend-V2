@@ -45,6 +45,11 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.GET, "/letters/received/{id}").authenticated()
                         .requestMatchers(HttpMethod.GET, "/letters/sent/{id}").authenticated()
 
+                        //comment
+                        .requestMatchers(HttpMethod.POST, "/comment/{feed-id}").authenticated()
+                        .requestMatchers(HttpMethod.DELETE, "/comment/delete/{feed-id}").authenticated()
+                        .requestMatchers(HttpMethod.PATCH, "/comment/update/{feed-id}").authenticated()
+
                         .anyRequest().permitAll()
                 )
                 .addFilterBefore(
