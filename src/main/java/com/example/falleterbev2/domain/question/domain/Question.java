@@ -21,39 +21,39 @@ public class Question {
     private String question;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "first_user", nullable = false)
-    private User firstUser;
-    @Column(name = "first_user_name", nullable = false)
-    private String firstUserName;
+    @JoinColumn(name = "first_option", nullable = false)
+    private User firstOption;
+    @Column(name = "first_option_name", nullable = false)
+    private String firstOptionName;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "second_user", nullable = false)
-    private User secondUser;
-    @Column(name = "second_user_name", nullable = false)
-    private String secondUserName;
+    @JoinColumn(name = "second_option", nullable = false)
+    private User secondOption;
+    @Column(name = "second_option_name", nullable = false)
+    private String secondOptionName;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "third_user", nullable = false)
-    private User thirdUser;
-    @Column(name = "third_user_name", nullable = false)
-    private String thirdUserName;
+    @JoinColumn(name = "third_option", nullable = false)
+    private User thirdOption;
+    @Column(name = "third_option_name", nullable = false)
+    private String thirdOptionName;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "fourth_user", nullable = false)
-    private User fourthUser;
-    @Column(name = "fourth_user_name", nullable = false)
-    private String fourthUserName;
+    @JoinColumn(name = "fourth_option", nullable = false)
+    private User fourthOption;
+    @Column(name = "fourth_option_name", nullable = false)
+    private String fourthOptionName;
 
     @Builder
-    public Question(String question, User firstUser, String firstUserName, User secondUser, String secondUserName, User thirdUser, String thirdUserName, User fourthUser, String fourthUserName) {
+    public Question(String question, User firstOption, String firstOptionName, User secondOption, String secondOptionName, User thirdOption, String thirdOptionName, User fourthOption, String fourthOptionName) {
         this.question = question;
-        this.firstUser = firstUser;
-        this.firstUserName = firstUserName;
-        this.secondUser = secondUser;
-        this.secondUserName = secondUserName;
-        this.thirdUser = thirdUser;
-        this.thirdUserName = thirdUserName;
-        this.fourthUser = fourthUser;
-        this.fourthUserName = fourthUserName;
+        this.firstOption = firstOption;
+        this.firstOptionName = firstOptionName;
+        this.secondOption = secondOption;
+        this.secondOptionName = secondOptionName;
+        this.thirdOption = thirdOption;
+        this.thirdOptionName = thirdOptionName;
+        this.fourthOption = fourthOption;
+        this.fourthOptionName = fourthOptionName;
     }
 }

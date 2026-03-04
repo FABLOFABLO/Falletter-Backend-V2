@@ -26,14 +26,14 @@ public class QuestionGetService {
 
         Question question = Question.builder()
                 .question(questionList.getQuestion())
-                .firstUser(randomUser.get(0))
-                .firstUserName(randomUser.get(0).getName())
-                .secondUser(randomUser.get(1))
-                .secondUserName(randomUser.get(1).getName())
-                .thirdUser(randomUser.get(2))
-                .thirdUserName(randomUser.get(2).getName())
-                .fourthUser(randomUser.get(3))
-                .fourthUserName(randomUser.get(3).getName())
+                .firstOption(randomUser.get(0))
+                .firstOptionName(randomUser.get(0).getName())
+                .secondOption(randomUser.get(1))
+                .secondOptionName(randomUser.get(1).getName())
+                .thirdOption(randomUser.get(2))
+                .thirdOptionName(randomUser.get(2).getName())
+                .fourthOption(randomUser.get(3))
+                .fourthOptionName(randomUser.get(3).getName())
                 .build();
 
         Long id = questionRepository.save(question).getId();
